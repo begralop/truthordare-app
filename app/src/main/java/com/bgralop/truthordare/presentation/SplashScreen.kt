@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         lifecycleScope.launch {
-            delay(3000)
+            delay(5000)
 
             withContext(Dispatchers.Main) {
                 startActivity(
