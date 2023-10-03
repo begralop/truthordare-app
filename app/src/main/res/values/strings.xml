@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Truth or dare</string>
+    <string name="activity_main_welcome_message">Bienvenid@! Haz click para jugar</string>
 </resources>
