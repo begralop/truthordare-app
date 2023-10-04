@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Truth or dare</string>
     <string name="activity_main_welcome_message">Bienvenid@! Haz click para jugar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_select_turn">IS THE TURN OF...</string>
+    <string name="fragment_select_btn_truth">TRUTH</string>
+    <string name="fragment_select_btn_dare">DARE</string>
 </resources>

@@ -32,5 +32,10 @@ class PlayersFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnFragmentPlayersPlay.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_playersFragment_to_selectTruthOrDareFragment
+            )
+        }
     }
 }

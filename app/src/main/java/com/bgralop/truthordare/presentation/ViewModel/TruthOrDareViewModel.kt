@@ -34,10 +34,10 @@ class TruthOrDareViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val data = getTruthQuestionUseCase.execute()
-
-                withContext(Dispatchers.Main) {
-                    truthOrDareQuestionsMutableLiveData.value = ResourceState.Success(data)
+                    withContext(Dispatchers.Main) {
+                        truthOrDareQuestionsMutableLiveData.value = ResourceState.Success(data)
                 }
+
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     truthOrDareQuestionsMutableLiveData.value =

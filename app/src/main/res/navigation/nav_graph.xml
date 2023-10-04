@@ -18,6 +18,32 @@
         android:id="@+id/PlayersFragment"
         android:name="com.bgralop.truthordare.presentation.fragment.PlayersFragment"
         tools:layout="@layout/fragment_players">
+        <action
+            android:id="@+id/action_playersFragment_to_selectTruthOrDareFragment"
+            app:destination="@id/SelectTruthOrDareFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SelectTruthOrDareFragment"
+        android:name="com.bgralop.truthordare.presentation.fragment.SelectTruthOrDareFragment"
+        tools:layout="@layout/fragment_select_truth_or_dare">
+        <action
+            android:id="@+id/action_truthOrDareFragment_to_questionFragment"
+            app:destination="@id/QuestionsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/QuestionsFragment"
+        android:name="com.bgralop.truthordare.presentation.fragment.QuestionFragment"
+        tools:layout="@layout/fragment_question">
+        <action
+            android:id="@+id/action_questionFragment_to_truthOrDareFragment"
+            app:destination="@id/SelectTruthOrDareFragment" />
+
+        <argument
+            android:name="truthOrDare"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

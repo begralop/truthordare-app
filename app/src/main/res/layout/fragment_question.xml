@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/tv_activity_main_welcome"
         android:layout_width="match_parent"
@@ -15,17 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="38sp"
         android:gravity="center"
-        android:text="@string/activity_main_welcome_message"
+        android:text="PREGUNTASSS"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_welcome_play"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_activity_main_welcome"
-        android:text="JUGAR"/>
 
     <ProgressBar
         android:id="@+id/pb_character_list"
@@ -33,8 +25,9 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_welcome_play"
+        app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
