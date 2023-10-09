@@ -1,43 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+
 
     <LinearLayout
-        android:id="@+id/editTextContainer"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTextName"
-            android:layout_width="0dp"
+        <!-- EditText inicial -->
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Nombre" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Eliminar" />
-
+            android:hint="Texto 1" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonAdd"
+
+    <Button
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Añadir campo" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:text="Añadir EditText" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_fragment_players_play"
         android:layout_marginTop="64dp"
@@ -48,3 +37,4 @@
         />
 
 </LinearLayout>
+

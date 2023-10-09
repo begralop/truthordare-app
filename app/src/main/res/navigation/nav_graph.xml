@@ -30,7 +30,6 @@
         <action
             android:id="@+id/action_truthOrDareFragment_to_questionFragment"
             app:destination="@id/QuestionsFragment" />
-
     </fragment>
 
     <fragment

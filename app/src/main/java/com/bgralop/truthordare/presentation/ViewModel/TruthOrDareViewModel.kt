@@ -1,5 +1,6 @@
 package com.bgralop.truthordare.presentation.ViewModel
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,7 @@ class TruthOrDareViewModel(
         return truthOrDareQuestionsMutableLiveData
     }
 
+    @SuppressLint("SuspiciousIndentation")
     fun fetchTruthQuestions() {
         truthOrDareQuestionsMutableLiveData.value = ResourceState.Loading()
 
