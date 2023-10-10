@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@id/WelcomeFragment">
 
     <fragment
-        android:id="@+id/welcomeFragment"
+        android:id="@+id/WelcomeFragment"
         android:name="com.bgralop.truthordare.presentation.fragment.WelcomeFragment"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_truthOrDareFragment_to_questionFragment"
             app:destination="@id/QuestionsFragment" />
+        <action
+            android:id="@+id/action_SelectTruthOrDareFragment_to_WelcomeFragment"
+            app:destination="@id/WelcomeFragment" />
     </fragment>
 
     <fragment

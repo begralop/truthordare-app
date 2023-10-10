@@ -1,10 +1,7 @@
 package com.bgralop.truthordare.presentation.fragment
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Handler
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -17,23 +14,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bgralop.truthordare.R
 import com.bgralop.truthordare.databinding.FragmentPlayersBinding
-import com.bgralop.truthordare.databinding.FragmentWelcomeBinding
-import com.bgralop.truthordare.model.ResourceState
-import com.bgralop.truthordare.model.TruthOrDareQuestions
 import com.bgralop.truthordare.presentation.ViewModel.SharedViewModel
-import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareQuestionsState
-import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareViewModel
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class PlayersFragment: Fragment() {
 
     private val binding: FragmentPlayersBinding by lazy {
         FragmentPlayersBinding.inflate(layoutInflater)
     }
-    private var editTextCount = 1 // Contador para llevar un seguimiento de los EditText
+    private var editTextCount = 1
     private lateinit var sharedViewModel: SharedViewModel
-    private val handler = Handler()
-    private val delayMillis = 1000
+    private var prevEditText: EditText? = null
+    private var prevEditTextValue2: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,76 +38,112 @@ class PlayersFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnFragmentPlayersPlay.setOnClickListener {
-            findNavController().navigate(
-                PlayersFragmentDirections.actionPlayersFragmentToSelectTruthOrDareFragment()
-            )
-        }
+            val firstEditText = binding.etPlayersNameIni
+            val firstEditTextValue = firstEditText.text.toString()
+            sharedViewModel.nameList.add(firstEditTextValue)
 
-        binding.addButton.setOnClickListener {
-            addEditText()
+            if(isAnyEditTextEmpty()) {
+                showAlert("Porfavor, complete todos los nombres antes de jugar")
+            } else {
+                if(prevEditText != null) {
+                    val prevEditTextValue = prevEditText!!.text.toString()
+                    if(prevEditTextValue2 != prevEditTextValue) {
+                        sharedViewModel.nameList.add(prevEditTextValue)
+                        prevEditTextValue2 = prevEditTextValue
+                    }
+                }
+                findNavController().navigate(
+                    PlayersFragmentDirections.actionPlayersFragmentToSelectTruthOrDareFragment()
+                )
+            }
+        }
+        binding.btnPlayersAddName.setOnClickListener {
+            if(isAnyEditTextEmpty()) {
+                showAlert("Porfavor, complete todos los nombres antes de jugar")
+            }else{
+                val firstEditText = binding.etPlayersNameIni
+                val firstEditTextValue = firstEditText.text.toString()
+                addEditText(firstEditTextValue)
+            }
         }
     }
-    private fun addEditText() {
 
-        val firstEditText = binding.editText1
-        val firstEditTextValue = firstEditText.text.toString()
-        sharedViewModel.nameList.add(firstEditTextValue)
 
-        val editText = EditText(context)
-        val params = LinearLayout.LayoutParams(
-            resources.getDimensionPixelSize(R.dimen.editTextWidth), // Ancho de 30dp
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-        )
+    private fun addEditText(firstEditTextValue: String) {
 
-        editText.layoutParams = params
-
-        val deleteButton = Button(context)
-        deleteButton.setBackgroundResource(R.drawable.custom_button_background)
-        deleteButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_delete, 0, 0, 0)
-        deleteButton.setOnClickListener {
-            deleteEditText(editText, deleteButton)
+        if(prevEditText != null) {
+            val prevEditTextValue = prevEditText!!.text.toString()
+            sharedViewModel.nameList.add(prevEditTextValue)
         }
 
-        val container = LinearLayout(context)
-        container.orientation = LinearLayout.HORIZONTAL
-        container.gravity = Gravity.CENTER_HORIZONTAL
-        container.addView(editText)
+        if(firstEditTextValue.isNotEmpty()) {
+            val editText = EditText(context)
+            val params = LinearLayout.LayoutParams(
+                resources.getDimensionPixelSize(R.dimen.editTextWidth),
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+            )
+            editText.layoutParams = params
 
-        // Agregar el botón de eliminar solo a los EditText adicionales
-        if (editTextCount >= 1) {
-            container.addView(deleteButton)
-        }
-
-        binding.container.addView(container)
-        editTextCount++
-
-        // Agregar un TextWatcher al EditText para detectar cambios y agregar a la lista
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                val nombre = s.toString()
-                // Si ya hay un temporizador en marcha, cancela el temporizador anterior
-                handler.removeCallbacksAndMessages(null)
-
-                // Inicia un nuevo temporizador para guardar los nombres después de 'delayMillis'
-                handler.postDelayed({
-                    sharedViewModel.nameList.add(nombre)
-                    if (nombre.isNotEmpty()) {
-                        Log.d("Nombre", sharedViewModel.nameList.toString())
-                    }
-                }, delayMillis.toLong())
+            val deleteButton = Button(context)
+            deleteButton.setBackgroundResource(R.drawable.custom_button_background)
+            deleteButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_delete, 0, 0, 0)
+            deleteButton.setOnClickListener {
+                deleteEditText(editText, deleteButton)
             }
-        })
+
+            val container = LinearLayout(context)
+            container.orientation = LinearLayout.HORIZONTAL
+            container.gravity = Gravity.CENTER_HORIZONTAL
+            container.addView(editText)
+
+            if (editTextCount >= 1) {
+                container.addView(deleteButton)
+            }
+
+            prevEditText = editText
+
+            binding.container.addView(container)
+            editTextCount++
+        }
     }
 
     private fun deleteEditText(editText: EditText, deleteButton: Button) {
         val parentContainer = editText.parent as? View
         parentContainer?.let {
-            binding.container.removeView(parentContainer)
-            editTextCount--
+            val index = binding.container.indexOfChild(parentContainer)
+            if(index >= 0) {
+                binding.container.removeView(parentContainer)
+                editTextCount--
+                // sharedViewModel.nameList.removeAt(index)
+            }
         }
+    }
+
+    private fun isAnyEditTextEmpty(): Boolean {
+        val firstEditText = binding.etPlayersNameIni
+        if (firstEditText.text.toString().isEmpty()) {
+            return true
+        }
+
+        for (i in 0 until binding.container.childCount) {
+            val childView = binding.container.getChildAt(i)
+            if (childView is LinearLayout) {
+                val editText = childView.getChildAt(0) as EditText
+                if (editText.text.toString().isEmpty()) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    private fun showAlert(message: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Alerta")
+        builder.setMessage(message)
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 }

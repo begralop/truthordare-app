@@ -1,21 +1,17 @@
 package com.bgralop.truthordare.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bgralop.truthordare.R
 import com.bgralop.truthordare.databinding.FragmentSelectTruthOrDareBinding
-import com.bgralop.truthordare.databinding.FragmentWelcomeBinding
-import com.bgralop.truthordare.model.ResourceState
-import com.bgralop.truthordare.model.TruthOrDareQuestions
 import com.bgralop.truthordare.presentation.ViewModel.SharedViewModel
-import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareQuestionsState
-import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareViewModel
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class SelectTruthOrDareFragment : Fragment() {
 
@@ -47,6 +43,7 @@ class SelectTruthOrDareFragment : Fragment() {
             val randomIndex = random.nextInt(nameList.size)
             val randomName = nameList[randomIndex]
             binding.tvFragmentSelectName.text = randomName
+            Log.d("LIST", nameList.toString())
         }
 
         binding.btnFragmentSelectTruth.setOnClickListener {
@@ -61,6 +58,11 @@ class SelectTruthOrDareFragment : Fragment() {
             findNavController().navigate(
                 SelectTruthOrDareFragmentDirections.actionTruthOrDareFragmentToQuestionFragment(truthOrDare)
             )
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+            findNavController().navigate(R.id.action_SelectTruthOrDareFragment_to_WelcomeFragment)
+            sharedViewModel.clearNameList()
         }
     }
 }
