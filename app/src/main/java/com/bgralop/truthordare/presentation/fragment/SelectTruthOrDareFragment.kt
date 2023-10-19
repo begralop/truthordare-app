@@ -37,6 +37,7 @@ class SelectTruthOrDareFragment : Fragment() {
         // Resto del código para inflar la vista y mostrar los nombres
 
         val nameList = sharedViewModel.nameList
+        Log.d("elemento", sharedViewModel.nameList.toString())
 
         val random = java.util.Random()
         if (nameList.isNotEmpty()) {

@@ -2,6 +2,7 @@ package com.bgralop.truthordare.presentation.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -111,10 +112,22 @@ class PlayersFragment: Fragment() {
         val parentContainer = editText.parent as? View
         parentContainer?.let {
             val index = binding.container.indexOfChild(parentContainer)
-            if(index >= 0) {
+            if (index >= 0) {
+                if (index < sharedViewModel.nameList.size) {
+                    val textToDelete = editText.text.toString()
+
+                    // Itera sobre la lista y busca una coincidencia
+                    val iterator = sharedViewModel.nameList.iterator()
+                    while (iterator.hasNext()) {
+                        val item = iterator.next()
+                        if (item == textToDelete) {
+                            iterator.remove()
+                            break // Sal del bucle después de encontrar la coincidencia
+                        }
+                    }
+                }
                 binding.container.removeView(parentContainer)
                 editTextCount--
-                // sharedViewModel.nameList.removeAt(index)
             }
         }
     }

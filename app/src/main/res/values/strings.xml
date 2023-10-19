@@ -6,4 +6,6 @@
     <string name="fragment_select_turn">IS THE TURN OF...</string>
     <string name="fragment_select_btn_truth">TRUTH</string>
     <string name="fragment_select_btn_dare">DARE</string>
+    <string name="play_button_fragment_players">PLAY</string>
+    <string name="add_name_button_fragment_players">Add name</string>
 </resources>
