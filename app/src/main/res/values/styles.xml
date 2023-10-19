@@ -1,0 +1,5 @@
+<resources>
+    <style name="CustomFontEditText">
+        <item name="android:fontFamily">@font/custom_font</item>
+    </style>
+</resources>

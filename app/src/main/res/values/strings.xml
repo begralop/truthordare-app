@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">Truth or dare</string>
-    <string name="activity_main_welcome_message">Bienvenid@! Haz click para jugar</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="activity_main_welcome_message">Welcome to… Truth or dare!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fragment_select_turn">IS THE TURN OF...</string>
+    <string name="fragment_select_turn">IS THE TURN OF…</string>
     <string name="fragment_select_btn_truth">TRUTH</string>
     <string name="fragment_select_btn_dare">DARE</string>
     <string name="play_button_fragment_players">PLAY</string>
     <string name="add_name_button_fragment_players">Add name</string>
+    <string name="et_hint_name">Enter name…</string>
+    <string name="et_players">PLAYERS</string>
+    <string name="btn_play_fragment_welcome">PLAY NOW</string>
+    <string name="btn_next_fragment_questions">NEXT</string>
+    <string name="tv_questions">The question is…</string>
 </resources>

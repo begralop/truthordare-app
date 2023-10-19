@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bgralop.truthordare.R
 import com.bgralop.truthordare.databinding.FragmentQuestionBinding
-import com.bgralop.truthordare.databinding.FragmentWelcomeBinding
 import com.bgralop.truthordare.model.ResourceState
 import com.bgralop.truthordare.model.TruthOrDareQuestions
 import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareQuestionsState
@@ -40,6 +38,11 @@ class QuestionFragment : Fragment() {
         }
         if(args.truthOrDare == 1){
             charactersViewModel.fetchDareQuestions()
+        }
+        binding.btnFragmentQuestionNextPlayer.setOnClickListener{
+            findNavController().navigate(
+                QuestionFragmentDirections.actionQuestionFragmentToTruthOrDareFragment()
+            )
         }
     }
 

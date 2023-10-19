@@ -4,6 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/et_players"
+        android:layout_marginTop="28dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/custom_font"
+        android:layout_marginBottom="16dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="50sp"
+        />
+
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -13,30 +26,33 @@
         <EditText
             android:id="@+id/et_players_name_ini"
             android:layout_gravity="center_horizontal"
+            android:autofillHints="name"
             android:layout_width="match_parent"
+            android:fontFamily="@font/custom_font"
+            android:inputType="textPersonName"
             android:layout_height="wrap_content"
-            android:hint="Texto 1" />
+            android:hint="@string/et_hint_name" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_players_add_name"
-        android:layout_width="73dp"
-        android:layout_height="88dp"
-        android:background="@android:color/transparent"
-        image
-        android:padding="8dp" />
-
     <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_players_add_name"
         android:layout_width="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_add"
+        android:layout_marginTop="@dimen/margin8"
+        android:layout_marginStart="4dp"
         android:layout_height="wrap_content"
-        android:src="@mipmap/add_icon_foreground"/>
+        android:scaleType="fitCenter"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_fragment_players_play"
         android:layout_marginTop="64dp"
         android:background="@drawable/play_button"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:textColor="@color/white"
+        android:fontFamily="@font/custom_font"
+        android:textSize="30sp"
         android:text="@string/play_button_fragment_players"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         tools:text="@string/fragment_select_turn"
         android:gravity="center"
-        android:textSize="50dp"
+        android:fontFamily="@font/custom_font"
+        android:textSize="50sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,12 +22,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_fragment_select_name"
+        android:fontFamily="@font/custom_font"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_fragment_select_turn"
         app:layout_constraintStart_toStartOf="@+id/tv_fragment_select_turn"
         app:layout_constraintEnd_toEndOf="@+id/tv_fragment_select_turn"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:layout_margin="16dp"
         android:gravity="center"
         tools:text="BELÉN" />

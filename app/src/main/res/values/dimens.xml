@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="editTextWidth">350dp</dimen>
+    <dimen name="corners_btn">12dp</dimen>
+
+    <dimen name="margin8">8dp</dimen>
+
 </resources>

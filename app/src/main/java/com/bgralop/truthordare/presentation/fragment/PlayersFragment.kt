@@ -2,7 +2,7 @@ package com.bgralop.truthordare.presentation.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -44,7 +44,7 @@ class PlayersFragment: Fragment() {
             sharedViewModel.nameList.add(firstEditTextValue)
 
             if(isAnyEditTextEmpty()) {
-                showAlert("Porfavor, complete todos los nombres antes de jugar")
+                showAlert("Porfavor, complete todos los nombres antes de jugar.")
             } else {
                 if(prevEditText != null) {
                     val prevEditTextValue = prevEditText!!.text.toString()
@@ -60,7 +60,7 @@ class PlayersFragment: Fragment() {
         }
         binding.btnPlayersAddName.setOnClickListener {
             if(isAnyEditTextEmpty()) {
-                showAlert("Porfavor, complete todos los nombres antes de jugar")
+                showAlert("Porfavor, complete todos los nombres antes de añadir más.")
             }else{
                 val firstEditText = binding.etPlayersNameIni
                 val firstEditTextValue = firstEditText.text.toString()
@@ -68,7 +68,6 @@ class PlayersFragment: Fragment() {
             }
         }
     }
-
 
     private fun addEditText(firstEditTextValue: String) {
 
@@ -78,7 +77,7 @@ class PlayersFragment: Fragment() {
         }
 
         if(firstEditTextValue.isNotEmpty()) {
-            val editText = EditText(context)
+            val editText = EditText(ContextThemeWrapper(context, R.style.CustomFontEditText))
             val params = LinearLayout.LayoutParams(
                 resources.getDimensionPixelSize(R.dimen.editTextWidth),
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -86,7 +85,12 @@ class PlayersFragment: Fragment() {
             editText.layoutParams = params
 
             val deleteButton = Button(context)
-            deleteButton.setBackgroundResource(R.drawable.custom_button_background)
+            val deleteButtonParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            deleteButton.layoutParams = deleteButtonParams
+            deleteButton.setBackgroundResource(R.drawable.transparent_button_background)
             deleteButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_delete, 0, 0, 0)
             deleteButton.setOnClickListener {
                 deleteEditText(editText, deleteButton)
@@ -116,13 +120,12 @@ class PlayersFragment: Fragment() {
                 if (index < sharedViewModel.nameList.size) {
                     val textToDelete = editText.text.toString()
 
-                    // Itera sobre la lista y busca una coincidencia
                     val iterator = sharedViewModel.nameList.iterator()
                     while (iterator.hasNext()) {
                         val item = iterator.next()
                         if (item == textToDelete) {
                             iterator.remove()
-                            break // Sal del bucle después de encontrar la coincidencia
+                            break
                         }
                     }
                 }

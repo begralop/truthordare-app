@@ -2,30 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
-    <TextView
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_activity_main_welcome"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_marginTop="205dp"
+        android:fontFamily="@font/custom_font"
+        android:textColor="@color/black"
+        android:layout_marginTop="245dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="38sp"
+        android:textSize="48sp"
         android:gravity="center"
         android:text="@string/activity_main_welcome_message"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_welcome_play"
-        android:layout_width="150dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="180dp"
+        android:height="60dp"
+        android:background="@drawable/play_button"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:fontFamily="@font/custom_font"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_activity_main_welcome"
-        android:text="JUGAR"/>
+        android:text="@string/btn_play_fragment_welcome"/>
 
     <ProgressBar
         android:id="@+id/pb_character_list"
