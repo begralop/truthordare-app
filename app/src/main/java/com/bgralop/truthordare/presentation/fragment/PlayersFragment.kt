@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -34,7 +33,7 @@ class PlayersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnFragmentPlayersPlay.setOnClickListener {
-            if (isAnyEditTextEmpty()) {
+            if (sharedViewModel.nameList.isEmpty()) {
                 showAlert("Por favor, complete todos los nombres antes de jugar.")
             } else {
                 findNavController().navigate(
@@ -108,24 +107,6 @@ class PlayersFragment : Fragment() {
             val textToDelete = textView.text.toString()
             sharedViewModel.nameList.remove(textToDelete)
         }
-    }
-
-    private fun isAnyEditTextEmpty(): Boolean {
-        val firstEditText = binding.etPlayersNameIni
-        if (firstEditText.text.toString().isNotEmpty()) {
-            return true
-        }
-
-        for (i in 0 until binding.container.childCount) {
-            val childView = binding.container.getChildAt(i)
-            if (childView is LinearLayout) {
-                val textView = childView.getChildAt(0) as TextView
-                if (textView.text.toString().isEmpty()) {
-                    return true
-                }
-            }
-        }
-        return false
     }
 
     private fun showAlert(message: String) {

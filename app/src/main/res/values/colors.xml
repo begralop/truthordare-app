@@ -6,5 +6,7 @@
     <color name="background_splash">#f0f0f0</color>
     <color name="blue_btn">#3186EC</color>
     <color name="blue_btn_pressed">#002C61</color>
+    <color name="red_btn_pressed">#590000</color>
+    <color name="red_btn">#CC0000</color>
     <color name="transparent">#00000000</color>
 </resources>
