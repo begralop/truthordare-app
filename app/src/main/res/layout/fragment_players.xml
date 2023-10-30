@@ -21,7 +21,9 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/left_margin"
+        android:layout_marginEnd="@dimen/right_margin">
 
         <EditText
             android:id="@+id/et_players_name_ini"
@@ -40,7 +42,7 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_add"
         android:layout_marginTop="@dimen/margin8"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="@dimen/left_margin"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
         />

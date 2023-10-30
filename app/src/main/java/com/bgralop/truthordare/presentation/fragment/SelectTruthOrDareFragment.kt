@@ -34,8 +34,6 @@ class SelectTruthOrDareFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Resto del código para inflar la vista y mostrar los nombres
-
         val nameList = sharedViewModel.nameList
         Log.d("elemento", sharedViewModel.nameList.toString())
 
@@ -44,7 +42,6 @@ class SelectTruthOrDareFragment : Fragment() {
             val randomIndex = random.nextInt(nameList.size)
             val randomName = nameList[randomIndex]
             binding.tvFragmentSelectName.text = randomName
-            Log.d("LIST", nameList.toString())
         }
 
         binding.btnFragmentSelectTruth.setOnClickListener {

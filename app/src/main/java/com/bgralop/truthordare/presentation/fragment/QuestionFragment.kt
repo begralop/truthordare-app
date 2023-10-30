@@ -19,7 +19,7 @@ class QuestionFragment : Fragment() {
         FragmentQuestionBinding.inflate(layoutInflater)
     }
 
-    private val charactersViewModel: TruthOrDareViewModel by activityViewModel()
+    private val truthOrDareViewModel: TruthOrDareViewModel by activityViewModel()
     private val args: QuestionFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +34,10 @@ class QuestionFragment : Fragment() {
         initViewModel()
 
         if(args.truthOrDare == 0){
-            charactersViewModel.fetchTruthQuestions()
+            truthOrDareViewModel.fetchTruthQuestions()
         }
         if(args.truthOrDare == 1){
-            charactersViewModel.fetchDareQuestions()
+            truthOrDareViewModel.fetchDareQuestions()
         }
         binding.btnFragmentQuestionNextPlayer.setOnClickListener{
             findNavController().navigate(
@@ -47,24 +47,24 @@ class QuestionFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        charactersViewModel.getTruthQuestionsLiveData().observe(viewLifecycleOwner) { state ->
-            handleCharacterListState(state)
+        truthOrDareViewModel.getTruthQuestionsLiveData().observe(viewLifecycleOwner) { state ->
+            getTruthOrDareHandle(state)
         }
     }
 
-    private fun handleCharacterListState(state: TruthOrDareQuestionsState) {
+    private fun getTruthOrDareHandle(state: TruthOrDareQuestionsState) {
         when (state) {
             is ResourceState.Loading -> {
-                binding.pbCharacterList.visibility = View.VISIBLE
+                binding.pbQuestion.visibility = View.VISIBLE
             }
 
             is ResourceState.Success -> {
-                binding.pbCharacterList.visibility = View.GONE
+                binding.pbQuestion.visibility = View.GONE
                 initUI(state.result)
             }
 
             is ResourceState.Error -> {
-                binding.pbCharacterList.visibility = View.GONE
+                binding.pbQuestion.visibility = View.GONE
             }
         }
     }

@@ -2,30 +2,25 @@ package com.bgralop.truthordare.presentation.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.ContextThemeWrapper
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bgralop.truthordare.R
 import com.bgralop.truthordare.databinding.FragmentPlayersBinding
 import com.bgralop.truthordare.presentation.ViewModel.SharedViewModel
-
-class PlayersFragment: Fragment() {
-
+class PlayersFragment : Fragment() {
     private val binding: FragmentPlayersBinding by lazy {
         FragmentPlayersBinding.inflate(layoutInflater)
     }
-    private var editTextCount = 1
     private lateinit var sharedViewModel: SharedViewModel
-    private var prevEditText: EditText? = null
-    private var prevEditTextValue2: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,119 +34,100 @@ class PlayersFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnFragmentPlayersPlay.setOnClickListener {
-            val firstEditText = binding.etPlayersNameIni
-            val firstEditTextValue = firstEditText.text.toString()
-            sharedViewModel.nameList.add(firstEditTextValue)
-
-            if(isAnyEditTextEmpty()) {
-                showAlert("Porfavor, complete todos los nombres antes de jugar.")
+            if (isAnyEditTextEmpty()) {
+                showAlert("Por favor, complete todos los nombres antes de jugar.")
             } else {
-                if(prevEditText != null) {
-                    val prevEditTextValue = prevEditText!!.text.toString()
-                    if(prevEditTextValue2 != prevEditTextValue) {
-                        sharedViewModel.nameList.add(prevEditTextValue)
-                        prevEditTextValue2 = prevEditTextValue
-                    }
-                }
                 findNavController().navigate(
                     PlayersFragmentDirections.actionPlayersFragmentToSelectTruthOrDareFragment()
                 )
             }
         }
+
         binding.btnPlayersAddName.setOnClickListener {
-            if(isAnyEditTextEmpty()) {
-                showAlert("Porfavor, complete todos los nombres antes de añadir más.")
-            }else{
-                val firstEditText = binding.etPlayersNameIni
-                val firstEditTextValue = firstEditText.text.toString()
-                addEditText(firstEditTextValue)
+            val firstEditText = binding.etPlayersNameIni
+            val firstEditTextValue = firstEditText.text.toString()
+
+            if (firstEditTextValue.isNotEmpty()) {
+                addTextView(firstEditTextValue)
+                sharedViewModel.nameList.add(firstEditTextValue)
+                firstEditText.text.clear()
+            } else {
+                showAlert("No has introducido ningún nombre")
             }
         }
     }
 
-    private fun addEditText(firstEditTextValue: String) {
+    private fun addTextView(text: String) {
+        val container = RelativeLayout(context)
 
-        if(prevEditText != null) {
-            val prevEditTextValue = prevEditText!!.text.toString()
-            sharedViewModel.nameList.add(prevEditTextValue)
+        val textView = TextView(context)
+        textView.text = text
+        textView.textSize = 24f
+
+        val customFont =
+            context?.let { ResourcesCompat.getFont(it, R.font.custom_font) }
+        textView.typeface = customFont
+
+        val textViewParams = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        textViewParams.addRule(RelativeLayout.ALIGN_PARENT_START)
+        textViewParams.addRule(RelativeLayout.CENTER_VERTICAL)
+        textView.layoutParams = textViewParams
+
+        val deleteButton = Button(context)
+        deleteButton.layoutParams = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        deleteButton.setBackgroundResource(R.drawable.transparent_button_background)
+        deleteButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_delete, 0)
+        deleteButton.setOnClickListener {
+            deleteTextView(textView)
         }
 
-        if(firstEditTextValue.isNotEmpty()) {
-            val editText = EditText(ContextThemeWrapper(context, R.style.CustomFontEditText))
-            val params = LinearLayout.LayoutParams(
-                resources.getDimensionPixelSize(R.dimen.editTextWidth),
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-            )
-            editText.layoutParams = params
+        val deleteButtonParams = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        deleteButtonParams.addRule(RelativeLayout.ALIGN_PARENT_END)
+        deleteButtonParams.addRule(RelativeLayout.CENTER_VERTICAL)
+        deleteButton.layoutParams = deleteButtonParams
 
-            val deleteButton = Button(context)
-            val deleteButtonParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            deleteButton.layoutParams = deleteButtonParams
-            deleteButton.setBackgroundResource(R.drawable.transparent_button_background)
-            deleteButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_delete, 0, 0, 0)
-            deleteButton.setOnClickListener {
-                deleteEditText(editText, deleteButton)
-            }
+        container.addView(textView)
+        container.addView(deleteButton)
 
-            val container = LinearLayout(context)
-            container.orientation = LinearLayout.HORIZONTAL
-            container.gravity = Gravity.CENTER_HORIZONTAL
-            container.addView(editText)
-
-            if (editTextCount >= 1) {
-                container.addView(deleteButton)
-            }
-
-            prevEditText = editText
-
-            binding.container.addView(container)
-            editTextCount++
-        }
+        binding.container.addView(container)
     }
 
-    private fun deleteEditText(editText: EditText, deleteButton: Button) {
-        val parentContainer = editText.parent as? View
+    private fun deleteTextView(textView: TextView) {
+        val parentContainer = textView.parent as? View
         parentContainer?.let {
-            val index = binding.container.indexOfChild(parentContainer)
-            if (index >= 0) {
-                if (index < sharedViewModel.nameList.size) {
-                    val textToDelete = editText.text.toString()
-
-                    val iterator = sharedViewModel.nameList.iterator()
-                    while (iterator.hasNext()) {
-                        val item = iterator.next()
-                        if (item == textToDelete) {
-                            iterator.remove()
-                            break
-                        }
-                    }
-                }
-                binding.container.removeView(parentContainer)
-                editTextCount--
-            }
+            binding.container.removeView(parentContainer)
+            val textToDelete = textView.text.toString()
+            sharedViewModel.nameList.remove(textToDelete)
         }
     }
 
     private fun isAnyEditTextEmpty(): Boolean {
         val firstEditText = binding.etPlayersNameIni
-        if (firstEditText.text.toString().isEmpty()) {
+        if (firstEditText.text.toString().isNotEmpty()) {
             return true
         }
 
         for (i in 0 until binding.container.childCount) {
             val childView = binding.container.getChildAt(i)
             if (childView is LinearLayout) {
-                val editText = childView.getChildAt(0) as EditText
-                if (editText.text.toString().isEmpty()) {
+                val textView = childView.getChildAt(0) as TextView
+                if (textView.text.toString().isEmpty()) {
                     return true
                 }
             }
         }
         return false
     }
+
     private fun showAlert(message: String) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Alerta")
