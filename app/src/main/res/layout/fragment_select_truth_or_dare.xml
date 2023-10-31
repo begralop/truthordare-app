@@ -6,57 +6,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.fragment.SelectTruthOrDareFragment">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_fragment_select_turn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="@string/fragment_select_turn"
-        android:gravity="center"
-        android:fontFamily="@font/custom_font"
-        android:textSize="50sp"
+    <ImageView
+        android:layout_width="800dp"
+        android:layout_height="800dp"
+        android:alpha="0.99"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginHorizontal="50dp"/>
+        android:src="@drawable/wallapaper_app" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_angel"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="-45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_select_truth"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/angel_animation"
+        android:elevation="3dp"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_fragment_select_truth"
+        android:layout_width="match_parent"
+        android:layout_marginRight="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_height="150dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/custom_font"
+        android:textSize="80sp"
+        android:background="@drawable/transparent_truth_button_background"
+        android:text="@string/fragment_select_btn_truth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_fragment_select_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="50dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_fragment_select_name"
         android:fontFamily="@font/custom_font"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fragment_select_turn"
-        app:layout_constraintStart_toStartOf="@+id/tv_fragment_select_turn"
-        app:layout_constraintEnd_toEndOf="@+id/tv_fragment_select_turn"
-        android:textSize="30sp"
-        android:layout_margin="16dp"
-        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="60sp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="BELÉN" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_fragment_select_truth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/truth_button"
-        android:textColor="@color/white"
-        android:fontFamily="@font/custom_font"
-        android:text="@string/fragment_select_btn_truth"
-        app:layout_constraintEnd_toStartOf="@+id/btn_fragment_select_dare"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_demon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="-74dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fragment_select_name" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_fragment_select_dare"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/demon_animation"
+        android:elevation="3dp"
+        />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_fragment_select_dare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textSize="80sp"
+        android:layout_marginRight="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="120dp"
         android:text="@string/fragment_select_btn_dare"
-        android:background="@drawable/dare_button"
+        android:background="@drawable/transparent_dare_button_background"
         android:textColor="@color/white"
         android:fontFamily="@font/custom_font"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_fragment_select_truth"
-        app:layout_constraintTop_toTopOf="@+id/btn_fragment_select_truth"
-        app:layout_constraintBottom_toBottomOf="@id/btn_fragment_select_truth"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_fragment_select_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

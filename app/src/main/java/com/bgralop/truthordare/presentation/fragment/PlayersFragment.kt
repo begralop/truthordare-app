@@ -80,7 +80,7 @@ class PlayersFragment : Fragment() {
             RelativeLayout.LayoutParams.WRAP_CONTENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
-        deleteButton.setBackgroundResource(R.drawable.transparent_button_background)
+        deleteButton.setBackgroundResource(R.drawable.transparent_background)
         deleteButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_delete, 0)
         deleteButton.setOnClickListener {
             deleteTextView(textView)
