@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="800dp"
-        android:layout_height="800dp"
+        android:layout_width="1000dp"
+        android:layout_height="1000dp"
         android:alpha="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +43,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_activity_main_welcome"
         android:text="@string/btn_play_fragment_welcome"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_welcome_play_nhie"
+        android:layout_marginTop="28dp"
+        android:layout_width="140dp"
+        android:height="60dp"
+        android:background="@drawable/play_button"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:fontFamily="@font/custom_font"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_welcome_play"
+        android:text="@string/btn_play_nhie_fragment_welcome"/>
 
     <ProgressBar
         android:id="@+id/pb_question"

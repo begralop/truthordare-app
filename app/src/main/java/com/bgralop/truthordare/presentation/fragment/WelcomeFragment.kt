@@ -36,5 +36,11 @@ class WelcomeFragment: Fragment() {
                 R.id.action_welcomeFragment_to_playersFragment
             )
         }
+
+        binding.btnWelcomePlayNhie.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_welcomeFragment_to_GetNeverHaveIEverFragment
+            )
+        }
     }
 }

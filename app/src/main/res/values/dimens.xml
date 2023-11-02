@@ -6,5 +6,19 @@
     <dimen name="right_margin">16dp</dimen>
 
     <dimen name="margin8">8dp</dimen>
+    <dimen name="margin16">16dp</dimen>
+    <dimen name="margin28">28dp</dimen>
+    <dimen name="margin36">36dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Card -->
+    <dimen name="card_language_height">90dp</dimen>
+    <dimen name="card_language_width">160dp</dimen>
+    <dimen name="card_lesson_height">90dp</dimen>
+    <dimen name="card_lesson_width">160dp</dimen>
+
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_corner_small_radius">8dp</dimen>
 
 </resources>

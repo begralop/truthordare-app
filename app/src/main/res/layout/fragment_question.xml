@@ -15,9 +15,9 @@
 
     <TextView
         android:id="@+id/tv_activity_main_welcome"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="255dp"
         android:fontFamily="@font/custom_font"
         android:layout_marginStart="32dp"
         android:textColor="@color/black"

@@ -5,11 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bgralop.truthordare.R
 import com.bgralop.truthordare.databinding.FragmentQuestionBinding
 import com.bgralop.truthordare.model.ResourceState
 import com.bgralop.truthordare.model.TruthOrDareQuestions
+import com.bgralop.truthordare.presentation.ViewModel.SharedViewModel
 import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareQuestionsState
 import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -19,12 +23,15 @@ class QuestionFragment : Fragment() {
         FragmentQuestionBinding.inflate(layoutInflater)
     }
 
+    private lateinit var sharedViewModel: SharedViewModel
+
     private val truthOrDareViewModel: TruthOrDareViewModel by activityViewModel()
     private val args: QuestionFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
         return binding.root
     }
 
@@ -43,6 +50,11 @@ class QuestionFragment : Fragment() {
             findNavController().navigate(
                 QuestionFragmentDirections.actionQuestionFragmentToTruthOrDareFragment()
             )
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+            findNavController().navigate(R.id.action_QuestionFragment_to_WelcomeFragment)
+            sharedViewModel.clearNameList()
         }
     }
 
@@ -70,7 +82,7 @@ class QuestionFragment : Fragment() {
     }
 
     private fun initUI(question: TruthOrDareQuestions) {
-        val idiomaDeseado = "es"  // Cambia esto al idioma que desees obtener
+        val idiomaDeseado = "es"
 
         if (question.translations.containsKey(idiomaDeseado)) {
             val traduccion = question.translations[idiomaDeseado]

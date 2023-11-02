@@ -1,6 +1,7 @@
 package com.bgralop.truthordare.data.truthOrDareQuestions.remote
 
 import com.bgralop.truthordare.data.remote.TruthOrDareService
+import com.bgralop.truthordare.model.NeverHaveIEverQuestion
 import com.bgralop.truthordare.model.TruthOrDareQuestions
 import com.bgralop.truthordare.model.TruthOrDareResponse
 
@@ -14,5 +15,9 @@ class TruthOrDareRemoteImpl(
 
     suspend fun getDareQuestion(): TruthOrDareQuestions {
         return truthOrDareService.getDare()
+    }
+
+    suspend fun getNeverHaveIEverQuestion(): NeverHaveIEverQuestion {
+        return truthOrDareService.getNeverIHaveNever()
     }
 }

@@ -12,6 +12,15 @@
         <action
             android:id="@+id/action_welcomeFragment_to_playersFragment"
             app:destination="@id/PlayersFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_GetNeverHaveIEverFragment"
+            app:destination="@id/GetNeverHaveIEverFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/GetNeverHaveIEverFragment"
+        android:name="com.bgralop.truthordare.presentation.fragment.GetNeverHaveIEverFragment"
+        tools:layout="@layout/fragment_get_never_have_iever" >
     </fragment>
 
     <fragment
@@ -45,6 +54,9 @@
         <argument
             android:name="truthOrDare"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_QuestionFragment_to_WelcomeFragment"
+            app:destination="@id/WelcomeFragment" />
     </fragment>
 
 </navigation>
