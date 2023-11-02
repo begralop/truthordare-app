@@ -42,8 +42,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_fragment_question_next_player"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:background="@drawable/play_button"
         android:textColor="@color/white"
         android:fontFamily="@font/custom_font"

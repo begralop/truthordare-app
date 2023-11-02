@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:contentPadding="8dp"
+    app:contentPadding="@dimen/margin8"
     android:layout_marginTop="@dimen/margin8"
     app:cardCornerRadius="@dimen/card_corner_small_radius"
     app:cardElevation="1dp"
@@ -14,6 +14,8 @@
         android:id="@+id/tv_item_nhie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeNeverHave"
+        android:fontFamily="@font/custom_font"
         android:textColor="@color/white"
         tools:text="Never Have I Ever..."/>
 

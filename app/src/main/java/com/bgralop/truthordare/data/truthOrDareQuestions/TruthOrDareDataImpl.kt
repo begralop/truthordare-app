@@ -15,10 +15,8 @@ class TruthOrDareDataImpl(
     }
     override suspend fun getDareQuestion(): TruthOrDareQuestions {
         return truthOrDareRemoteImpl.getDareQuestion()
-
     }
     override suspend fun getNeverHaveIEverQuestion(): NeverHaveIEverQuestion {
         return truthOrDareRemoteImpl.getNeverHaveIEverQuestion()
     }
-
 }

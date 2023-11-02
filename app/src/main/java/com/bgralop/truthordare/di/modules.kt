@@ -31,5 +31,4 @@ val truthOrDareQuestionsModule = module {
 
     viewModel { TruthOrDareViewModel(get(), get()) }
     viewModel { NeverHaveIEverViewModel(get()) }
-
 }

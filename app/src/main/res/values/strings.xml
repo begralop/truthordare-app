@@ -1,17 +1,16 @@
 <resources>
-    <string name="app_name">Truth or dare</string>
-    <string name="activity_main_welcome_message">Welcome to… Truth or dare!</string>
-    <string name="fragment_nihe_text_">Never Have I Ever…</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fragment_select_turn">IS THE TURN OF…</string>
-    <string name="fragment_select_btn_truth">TRUTH</string>
-    <string name="fragment_select_btn_dare">DARE</string>
-    <string name="play_button_fragment_players">PLAY</string>
-    <string name="add_name_button_fragment_players">Add name</string>
-    <string name="et_hint_name">Enter name…</string>
-    <string name="et_players">PLAYERS</string>
-    <string name="btn_play_fragment_welcome">PLAY NOW</string>
+    <string name="app_name">Verdad o atrevimiento</string>
+    <string name="activity_main_welcome_message">Bienvenid@ a… Verdad o atrevimiento!</string>
+    <string name="fragment_nihe_text_">Yo nunca…</string>
+    <string name="fragment_select_turn">Es el turno de…</string>
+    <string name="fragment_select_btn_truth">VERDAD</string>
+    <string name="fragment_select_btn_dare">ATREVIMIENTO</string>
+    <string name="play_button_fragment_players">JUGAR</string>
+    <string name="add_name_button_fragment_players">Añadir nombre</string>
+    <string name="et_hint_name">Introduce un nombre…</string>
+    <string name="et_players">JUGADORES</string>
+    <string name="btn_play_fragment_welcome">JUGAR AHORA</string>
     <string name="btn_play_nhie_fragment_welcome">YO NUNCA…</string>
-    <string name="btn_next_fragment_questions">NEXT</string>
-    <string name="tv_questions">The question is…</string>
+    <string name="btn_next_fragment_questions">SIGUIENTE</string>
+    <string name="tv_questions">La pregunta es…</string>
 </resources>

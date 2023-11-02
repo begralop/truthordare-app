@@ -13,12 +13,3 @@ data class NeverHaveIEverQuestion (
     val question: String,
     val translations: Map<String, String>
 )
-
-data class Translations (
-    val bn: String,
-    val de: String,
-    val es: String,
-    val fr: String,
-    val hi: String,
-    val tl: String
-)

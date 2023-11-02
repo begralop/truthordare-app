@@ -1,7 +1,6 @@
 package com.bgralop.truthordare.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +48,6 @@ class GetNeverHaveIEverFragment : Fragment() {
 
         binding.rvNhieQuestions.adapter = neverHaveIEverAdapter
         binding.rvNhieQuestions.layoutManager = LinearLayoutManager(requireContext())
-        Log.d("rv", binding.rvNhieQuestions.adapter.toString())
 
         val itemTouchHelper = ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             override fun onMove(
@@ -62,9 +60,8 @@ class GetNeverHaveIEverFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val nhie_question = neverHaveIEverAdapter.neverHaveIEverList[position]
+                neverHaveIEverAdapter.neverHaveIEverList[position]
             }
-
         })
 
         itemTouchHelper.attachToRecyclerView(binding.rvNhieQuestions)
@@ -86,15 +83,16 @@ class GetNeverHaveIEverFragment : Fragment() {
     private fun handleNeverHaveIEverListState(state: NeverHaveIEverQuestionsState) {
         when(state) {
             is ResourceState.Loading -> {
-                //
+                binding.pbQuestion.visibility = View.VISIBLE
             }
             is ResourceState.Success -> {
+                binding.pbQuestion.visibility = View.GONE
                 neverHaveIEverAdapter.submitList((state.result))
             }
             is ResourceState.Error -> {
+                binding.pbQuestion.visibility = View.GONE
                 Toast.makeText(requireContext(), state.error, Toast.LENGTH_LONG).show()
             }
-            else -> {}
         }
     }
 }

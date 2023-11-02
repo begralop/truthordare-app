@@ -8,13 +8,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/et_players"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="@dimen/margin28"
         android:textColor="@color/black"
         android:fontFamily="@font/custom_font"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/margin16"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:textSize="50sp"
+        android:textSize="@dimen/textSizeNames"
         />
 
     <LinearLayout
@@ -50,12 +50,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_fragment_players_play"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="@dimen/margin64"
         android:background="@drawable/play_button"
         android:layout_width="140dp"
         android:textColor="@color/white"
         android:fontFamily="@font/custom_font"
-        android:textSize="30sp"
+        android:textSize="@dimen/textSizeBtnPlay"
         android:text="@string/play_button_fragment_players"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

@@ -31,18 +31,18 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_fragment_select_truth"
         android:layout_width="match_parent"
-        android:layout_marginRight="48dp"
-        android:layout_marginLeft="48dp"
+        android:layout_marginEnd="@dimen/margin48"
+        android:layout_marginStart="@dimen/margin48"
         android:layout_height="150dp"
         android:textColor="@color/white"
         android:fontFamily="@font/custom_font"
-        android:textSize="80sp"
+        android:textSize="@dimen/textSizeBtnTruthDare"
         android:background="@drawable/transparent_truth_button_background"
         android:text="@string/fragment_select_btn_truth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/tv_fragment_select_name"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="@dimen/margin50"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_fragment_select_name"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="60sp"
+        android:textSize="@dimen/textSizeName"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="BELÉN" />
@@ -74,10 +74,10 @@
         android:id="@+id/btn_fragment_select_dare"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:textSize="80sp"
-        android:layout_marginRight="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="120dp"
+        android:textSize="@dimen/textSizeBtnTruthDare"
+        android:layout_marginEnd="@dimen/margin48"
+        android:layout_marginStart="@dimen/margin48"
+        android:layout_marginTop="@dimen/margin120"
         android:text="@string/fragment_select_btn_dare"
         android:background="@drawable/transparent_dare_button_background"
         android:textColor="@color/white"

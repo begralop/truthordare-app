@@ -1,7 +1,6 @@
 package com.bgralop.truthordare.presentation.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,7 +29,14 @@ class NeverHaveIEverAdapter: RecyclerView.Adapter<NeverHaveIEverAdapter.NeverHav
             onClickListener.invoke(item)
         }
 
-        holder.nameTextView.text = item.question
+        val idiomaDeseado = "es"
+
+        if (item.translations.containsKey(idiomaDeseado)) {
+            val traduccion = item.translations[idiomaDeseado]
+            holder.nameTextView.text = traduccion
+        } else {
+            holder.nameTextView.text = item.question
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -38,7 +44,6 @@ class NeverHaveIEverAdapter: RecyclerView.Adapter<NeverHaveIEverAdapter.NeverHav
         neverHaveIEverList = list
         notifyDataSetChanged()
     }
-
 
     inner class NeverHaveIEverAdapterListViewHolder(binding: ItemNhieBinding): RecyclerView.ViewHolder(binding.root) {
         val rootView = binding.root
