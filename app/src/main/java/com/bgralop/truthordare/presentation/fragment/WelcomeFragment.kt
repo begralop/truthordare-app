@@ -1,7 +1,6 @@
 package com.bgralop.truthordare.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bgralop.truthordare.R
 import com.bgralop.truthordare.databinding.FragmentWelcomeBinding
-import com.bgralop.truthordare.model.ResourceState
-import com.bgralop.truthordare.model.TruthOrDareQuestions
-import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareQuestionsState
-import com.bgralop.truthordare.presentation.ViewModel.TruthOrDareViewModel
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class WelcomeFragment: Fragment() {
 
